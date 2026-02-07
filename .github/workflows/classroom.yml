@@ -1,0 +1,161 @@
+name: Autograding Tests
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+     # PROTECTION: Check if .tests folder matches original
+    - name: Check .tests folder integrity
+      run: |
+        echo "🔍 Verifying .tests directory has not been tampered with..."
+        
+        # Find the initial commit (template commit)
+        INITIAL_COMMIT=$(git rev-list --max-parents=0 HEAD)
+        echo "Initial commit: $INITIAL_COMMIT"
+        
+        # Compare each file in .tests directory
+        MODIFIED=0
+        
+        # Get list of files from initial commit in .tests directory only
+        git ls-tree -r $INITIAL_COMMIT .tests/ | awk '{print $4}' > /tmp/original_files.txt || true
+        
+        # Get list of files from current commit in .tests directory only
+        git ls-tree -r HEAD .tests/ | awk '{print $4}' > /tmp/current_files.txt || true
+        
+        echo "Original . tests files:"
+        cat /tmp/original_files.txt
+        echo ""
+        echo "Current .tests files:"
+        cat /tmp/current_files.txt
+        echo ""
+        
+        # Check if file lists are different
+        if !  diff -q /tmp/original_files.txt /tmp/current_files.txt > /dev/null 2>&1; then
+          echo "❌ ERROR: Files in .tests directory have been added or removed!"
+          echo ""
+          echo "Difference:"
+          diff /tmp/original_files.txt /tmp/current_files.txt || true
+          MODIFIED=1
+        else
+          # Compare content of each file
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              ORIGINAL_CONTENT=$(git show $INITIAL_COMMIT:"$file" 2>/dev/null | sha256sum | cut -d' ' -f1)
+              CURRENT_CONTENT=$(git show HEAD:"$file" 2>/dev/null | sha256sum | cut -d' ' -f1)
+              
+              if [ "$ORIGINAL_CONTENT" != "$CURRENT_CONTENT" ]; then
+                echo "❌ File modified: $file"
+                MODIFIED=1
+              fi
+            fi
+          done < /tmp/original_files.txt
+        fi
+        
+        if [ $MODIFIED -eq 1 ]; then
+          echo ""
+          echo "⚠️  DO NOT modify, add, delete, or rename any files inside the .tests folder!"
+          echo "These are test files managed by the instructor."
+          echo ""
+          echo "To fix this issue:"
+          echo "1. Restore the original .tests folder from the template"
+          echo "2. Do not modify any files in .tests/"
+          echo "3. Commit and push again"
+          exit 1
+        fi
+        
+        echo "✅ . tests directory integrity verified.  Proceeding with tests..."
+    
+    - name: Setup
+      run: npm ci
+      
+    - name: Submission
+      id: submission 
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Submission (2pts)"
+        command: 'true' 
+        timeout: 10
+        max-score: 2 
+    
+    # 1) Nav and Footer CSS (3 pts)
+    - name: Nav and Footer CSS
+      id: nav-footer-css
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "CSS: Nav and Footer (3 pts)"
+        command: npm test .tests/nav-footer.test.js
+        timeout: 10
+        max-score: 3
+
+    # 2) Header Splash CSS (4 pts)
+    - name: Header Splash CSS
+      id: header-splash-css
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "CSS: Header Splash (4 pts)"
+        command: npm test .tests/header.test.js
+        timeout: 10
+        max-score: 4
+
+    # 3) Sections CSS (4 pts)
+    - name: Sections CSS
+      id: sections-css
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "CSS: Sections (4 pts)"
+        command: npm test .tests/sections.test.js
+        timeout: 10
+        max-score: 4
+
+    # 4) Project Cards CSS (3 pts)
+    - name: Project Cards CSS
+      id: project-cards-css
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "CSS: Project Cards (3 pts)"
+        command: npm test .tests/cards.test.js
+        timeout: 10
+        max-score: 3
+
+    # 5) Responsive CSS (2 pts)
+    - name: Responsive CSS
+      id: responsive-css
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "CSS: Responsive (2 pts)"
+        command: npm test .tests/responsive.test.js
+        timeout: 10
+        max-score: 2
+
+    # 6) Contact Page CSS (2 pts)
+    - name: Contact Page CSS
+      id: contact-page-css
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "CSS: Contact Page (2 pts)"
+        command: npm test .tests/contact.test.js
+        timeout: 10
+        max-score: 2
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        SUBMISSION_RESULTS: "${{ steps.submission.outputs.result }}"
+        NAV-FOOTER-CSS_RESULTS: "${{ steps.nav-footer-css.outputs.result }}"
+        HEADER-SPLASH-CSS_RESULTS: "${{ steps.header-splash-css.outputs.result }}"
+        SECTIONS-CSS_RESULTS: "${{ steps.sections-css.outputs.result }}"
+        PROJECT-CARDS-CSS_RESULTS: "${{ steps.project-cards-css.outputs.result }}"
+        RESPONSIVE-CSS_RESULTS: "${{ steps.responsive-css.outputs.result }}"
+        CONTACT-PAGE-CSS_RESULTS: "${{ steps.contact-page-css.outputs.result }}"
+      with:
+        runners: submission,nav-footer-css,header-splash-css,sections-css,project-cards-css,responsive-css,contact-page-css
