@@ -1,24 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
 
+/* -------------------------
+   Base + Theme Tokens
+-------------------------- */
 :root {
+  /* light theme */
   --bg: #fafaf9;
+  --surface: #ffffff;
+  --surface-border: #e5e7eb;
+
   --panel: #FFEAD3;
   --panel-border: #9E3B3B;
+
   --accent: #B4535A;
   --text: #1f2937;
   --muted: #6b7280;
+
   --link: #2563eb;
   --link-hover: #1d4ed8;
-  --ring: rgba(180, 83, 90, 0.35);
 
-  --surface: #ffffff;
-  --surface-border: #e5e7eb;
+  --ring: rgba(180, 83, 90, 0.35);
   --shadow: rgba(0, 0, 0, 0.12);
 
   --media-bg: #ffffff;
   --dot: #d1d5db;
+
+  /* NEW: hero bg token so it can switch in dark mode */
+  --hero-bg: #fff7ed;
 }
 
+/* Dark theme overrides (works with your JS: data-theme="dark") */
 :root[data-theme="dark"] {
   --bg: #0b0f14;
   --surface: #0f172a;
@@ -38,8 +49,14 @@
 
   --media-bg: #0b1220;
   --dot: rgba(255, 255, 255, 0.22);
+
+  /* NEW: hero bg token in dark mode */
+  --hero-bg: color-mix(in srgb, var(--accent) 14%, var(--surface));
 }
 
+/* -------------------------
+   Resets + Accessibility
+-------------------------- */
 * {
   box-sizing: border-box;
 }
@@ -79,7 +96,7 @@ img {
   left: -999px;
   top: 10px;
   padding: 10px 12px;
-  background: #fff;
+  background: var(--surface);
   border: 2px solid var(--accent);
   border-radius: 10px;
   z-index: 999;
@@ -96,46 +113,21 @@ img {
   }
 }
 
+/* -------------------------
+   Nav
+-------------------------- */
 .site-nav {
   background: var(--surface);
-  border-bottom: 1px solid var(--surface-border);
   padding: 14px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.site-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--surface-border);
-}
-
-.panel {
-  background: var(--panel);
-  border: 2px solid var(--panel-border);
-}
-
-.slider,
-.project-img {
-  background: var(--media-bg);
-  border: 1px solid var(--surface-border);
-}
-
-.slide {
-  background: var(--media-bg);
-}
-
-.dot {
-  background: var(--dot);
-}
-
-.dot.active {
-  background: var(--accent);
+  border-bottom: 1px solid var(--surface-border);
 }
 
 .brand {
   margin: 0;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.2px;
 }
@@ -151,20 +143,22 @@ img {
   text-decoration: none;
   padding: 8px 10px;
   border-radius: 10px;
-  transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+  transition: background-color 160ms ease, transform 160ms ease;
 }
 
 .nav-link:hover {
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
   transform: translateY(-1px);
-  background: color-mix(in srgb, var(--surface) 70%, var(--panel) 30%);
-  box-shadow: 0 10px 22px var(--shadow);
 }
 
 .nav-link:focus-visible {
   outline: 3px solid var(--ring);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
+/* -------------------------
+   Dark Mode Toggle Button
+-------------------------- */
 .theme-toggle {
   border: 1px solid var(--surface-border);
   background: var(--surface);
@@ -181,7 +175,7 @@ img {
 .theme-toggle:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 22px var(--shadow);
-  background: color-mix(in srgb, var(--panel) 35%, var(--surface) 65%);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
 }
 
 :root[data-theme="dark"] .theme-toggle:hover {
@@ -193,6 +187,9 @@ img {
   outline-offset: 3px;
 }
 
+/* -------------------------
+   Shared Link “pill” style
+-------------------------- */
 .icon-link {
   display: inline-flex;
   align-items: center;
@@ -205,8 +202,8 @@ img {
 }
 
 .icon-link:hover {
-  background: color-mix(in srgb, var(--panel) 55%, var(--surface) 45%);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  box-shadow: 0 6px 18px var(--shadow);
   transform: translateY(-1px);
   text-decoration: none;
 }
@@ -216,9 +213,12 @@ img {
   outline-offset: 3px;
 }
 
+/* -------------------------
+   Hero (About) + Contact Hero
+-------------------------- */
 .hero,
 .contact-hero {
-  background: color-mix(in srgb, var(--surface) 70%, #fff7ed 30%);
+  background: var(--hero-bg);
   border-bottom: 1px solid var(--surface-border);
   padding: 26px 16px;
 }
@@ -245,7 +245,7 @@ img {
 .contact-hero h1 {
   font-family: "Poppins", sans-serif;
   margin: 0 0 8px 0;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--accent);
 }
 
@@ -257,6 +257,7 @@ img {
 .tagline {
   margin: 8px 0 0 0;
   color: var(--text);
+  /* FIX: no more hard-coded light text */
 }
 
 .quick-links {
@@ -274,9 +275,9 @@ img {
   border-radius: 12px;
   border: 2px solid var(--accent);
   background: var(--accent);
-  color: #fff;
+  color: white;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
 }
 
@@ -297,10 +298,13 @@ img {
 }
 
 .btn-outline:hover {
-  background: color-mix(in srgb, var(--panel) 55%, var(--surface) 45%);
-  color: color-mix(in srgb, var(--accent) 70%, var(--text) 30%);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  color: var(--text);
 }
 
+/* -------------------------
+   Panels / Sections
+-------------------------- */
 main {
   padding: 12px 0 26px 0;
 }
@@ -309,7 +313,9 @@ main {
   max-width: 980px;
   margin: 18px auto;
   padding: 18px;
+  background: var(--panel);
   border-radius: 14px;
+  border: 2px solid var(--panel-border);
 }
 
 .panel h2 {
@@ -335,6 +341,7 @@ main {
   font-size: 0.95rem;
 }
 
+/* DL styling */
 .two-col-dl {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -343,12 +350,13 @@ main {
 }
 
 .two-col-dl dt {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .two-col-dl dd {
   margin: 0;
-  color: color-mix(in srgb, var(--text) 80%, var(--muted) 20%);
+  color: var(--text);
+  /* FIX: was hard-coded */
 }
 
 .stacked-dl {
@@ -358,12 +366,13 @@ main {
 }
 
 .dl-row dt {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .dl-row dd {
   margin: 0;
-  color: color-mix(in srgb, var(--text) 80%, var(--muted) 20%);
+  color: var(--text);
+  /* FIX: was hard-coded */
 }
 
 .ext-link {
@@ -381,6 +390,7 @@ main {
   outline-offset: 2px;
 }
 
+/* readability polish */
 .bullets li,
 .panel ul li {
   margin-bottom: 6px;
@@ -391,6 +401,9 @@ main {
   text-underline-offset: 3px;
 }
 
+/* -------------------------
+   Skill bubbles
+-------------------------- */
 .skill-bubbles {
   list-style: none;
   margin: 12px 0 0 0;
@@ -404,12 +417,15 @@ main {
   padding: 8px 12px;
   border: 2px solid var(--panel-border);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--panel) 80%, var(--surface) 20%);
-  color: var(--text);
-  font-weight: 800;
+  background: color-mix(in srgb, var(--panel) 70%, var(--accent) 18%);
+  color: var(--panel-border);
+  font-weight: 600;
   font-size: 0.95rem;
 }
 
+/* -------------------------
+   Projects grid + cards (BIGGER!)
+-------------------------- */
 #projects.panel {
   max-width: 1140px;
 }
@@ -426,6 +442,11 @@ main {
     gap: 22px;
   }
 }
+
+.card.is-hidden {
+  display: none !important;
+}
+
 
 .card {
   background: var(--panel);
@@ -445,7 +466,7 @@ main {
 .card h3 {
   margin: 0 0 8px 0;
   font-family: "Poppins", sans-serif;
-  color: color-mix(in srgb, var(--accent) 70%, var(--text) 30%);
+  color: color-mix(in srgb, var(--panel-border) 85%, black);
 }
 
 .bullets {
@@ -453,83 +474,25 @@ main {
   padding: 0;
 }
 
-.project-img {
-  width: 100%;
-  height: 420px;
-  object-fit: contain;
-  border-radius: 12px;
-  margin: 10px 0;
-}
-
-.slider {
-  position: relative;
-  margin: 10px 0;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.slides {
-  position: relative;
-}
-
-.slide {
-  width: 100%;
-  height: 420px;
-  object-fit: contain;
-  display: none;
-}
-
-.slide.active {
-  display: block;
-}
-
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
-  cursor: pointer;
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  color: var(--text);
-  font-size: 28px;
-  line-height: 48px;
-  box-shadow: 0 12px 26px var(--shadow);
-}
-
-.slider-btn.prev {
-  left: 12px;
-}
-
-.slider-btn.next {
-  right: 12px;
-}
-
-.slider-btn:hover {
-  transform: translateY(-50%) scale(1.06);
-}
-
-.dots {
+/* Tech badges */
+.badges {
   display: flex;
-  gap: 7px;
-  justify-content: center;
-  padding: 10px 0 12px;
-  background: var(--media-bg);
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0 10px 0;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .slider-btn {
-    opacity: 0;
-    transition: opacity 160ms ease;
-  }
-
-  .slider:hover .slider-btn {
-    opacity: 1;
-  }
+.badge {
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
+/* Project toolbar (search + chips) */
 .projects-toolbar {
   display: grid;
   gap: 12px;
@@ -576,7 +539,7 @@ main {
   padding: 8px 10px;
   border-radius: 999px;
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 600;
   transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
 }
 
@@ -586,8 +549,8 @@ main {
 }
 
 .chip.active {
-  background: rgba(180, 83, 90, 0.12);
-  border-color: rgba(180, 83, 90, 0.45);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--surface-border));
 }
 
 .results-note {
@@ -596,27 +559,108 @@ main {
   font-size: 0.95rem;
 }
 
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 6px 0 10px 0;
+/* -------------------------
+   Media (image + slider) — FIXED FOR DARK MODE
+-------------------------- */
+.project-img {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  background: var(--media-bg);
+  border-radius: 12px;
+  border: 1px solid var(--surface-border);
+  margin: 10px 0;
 }
 
-.badge {
-  border: 1px solid rgba(180, 83, 90, 0.35);
-  background: rgba(180, 83, 90, 0.10);
-  color: var(--text);
-  padding: 5px 10px;
+.slider {
+  position: relative;
+  margin: 10px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+  background: var(--media-bg);
+}
+
+.slides {
+  position: relative;
+}
+
+.slide {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  background: var(--media-bg);
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+/* arrows */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 48px;
+  height: 48px;
   border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 800;
+  cursor: pointer;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--text);
+  font-size: 28px;
+  line-height: 48px;
+  box-shadow: 0 12px 26px var(--shadow);
 }
 
-.contact-hero {
-  text-align: center;
+.slider-btn.prev {
+  left: 12px;
 }
 
+.slider-btn.next {
+  right: 12px;
+}
+
+.slider-btn:hover {
+  transform: translateY(-50%) scale(1.06);
+}
+
+.dots {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  padding: 10px 0 12px;
+  background: var(--media-bg);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: var(--dot);
+}
+
+.dot.active {
+  background: var(--accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .slider-btn {
+    opacity: 0;
+    transition: opacity 160ms ease;
+  }
+
+  .slider:hover .slider-btn {
+    opacity: 1;
+  }
+}
+
+/* -------------------------
+   Contact page (match aesthetic + nicer form)
+-------------------------- */
 .one-col {
   max-width: 760px;
   margin: 18px auto;
@@ -629,8 +673,9 @@ main {
 }
 
 .contact-form label {
-  font-weight: 800;
+  font-weight: 600;
   color: var(--text);
+  /* FIX */
 }
 
 .contact-form input,
@@ -649,7 +694,7 @@ main {
 
 .contact-form input:hover,
 .contact-form textarea:hover {
-  border-color: color-mix(in srgb, var(--accent) 65%, var(--surface-border) 35%);
+  border-color: color-mix(in srgb, var(--accent) 65%, var(--surface-border));
 }
 
 .contact-form input:focus,
@@ -667,7 +712,7 @@ main {
   color: white;
   font-size: 1rem;
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 700;
   transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
 }
 
@@ -677,13 +722,18 @@ main {
   box-shadow: 0 10px 22px var(--shadow);
 }
 
+/* -------------------------
+   Footer
+-------------------------- */
 .site-footer {
+  background: var(--surface);
   color: var(--muted);
   padding: 16px;
   display: flex;
   justify-content: center;
   gap: 18px;
   align-items: center;
+  border-top: 1px solid var(--surface-border);
 }
 
 .site-footer p {
@@ -700,6 +750,9 @@ main {
   text-decoration: underline;
 }
 
+/* -------------------------
+   Back to top button
+-------------------------- */
 .to-top {
   position: fixed;
   right: 18px;
@@ -708,20 +761,18 @@ main {
   height: 44px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--surface) 92%, transparent);
-  border: 2px solid color-mix(in srgb, var(--accent) 35%, var(--surface-border) 65%);
+  border: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
   display: grid;
   place-items: center;
   text-decoration: none;
   color: var(--text);
   box-shadow: 0 12px 26px var(--shadow);
   transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
-  opacity: 0;
-  pointer-events: none;
 }
 
 .to-top:hover {
   transform: translateY(-2px);
-  background: color-mix(in srgb, var(--panel) 55%, var(--surface) 45%);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
   box-shadow: 0 14px 30px var(--shadow);
 }
 
@@ -730,6 +781,9 @@ main {
   outline-offset: 3px;
 }
 
+/* -------------------------
+   Responsive
+-------------------------- */
 @media (max-width: 980px) {
   #projects.panel {
     max-width: 980px;
