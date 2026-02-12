@@ -1,183 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saanvi Bamba</title>
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <nav>
-    <p>Saanvi Bamba</p>
-    <p><a href="contact.html">Contact Saanvi Bamba</a></p>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <nav class="site-nav">
+    <div class="nav-left">
+      <p class="brand">Saanvi Bamba</p>
+    </div>
+
+    <div class="nav-right">
+      <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        <span>Dark</span>
+      </button>
+
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+      <a class="nav-link icon-link" href="https://www.linkedin.com/in/saanvibamba" target="_blank"
+        rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fa-brands fa-square-linkedin" aria-hidden="true"></i>
+        <span class="sr-only">LinkedIn</span>
+      </a>
+    </div>
   </nav>
 
-  <header>
-    <h1>Saanvi Bamba</h1>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-top">
+        <img src="images/headshot.jpg" alt="Headshot of Saanvi Bamba" width="150" height="150" />
+        <div class="hero-text">
+          <h1>Saanvi Bamba</h1>
 
-    <img src="images/headshot.jpg" alt="Saanvi Bamba Headshot" width="150" />
+          <p class="address">
+            Cumming, GA &ndash; 678-897-3414 &ndash;
+            <a class="icon-link" href="mailto:saanvi.bamba@gmail.com">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              saanvi.bamba@gmail.com
+            </a>
+          </p>
 
-    <p class="address">
-      3005 Creek Tree Ln, Cumming, GA &ndash; 678-897-3414 &ndash;
-      <a href="mailto:saanvi.bamba@gmail.com">saanvi.bamba@gmail.com</a>
-    </p>
+          <p class="tagline">
+            Interested in <strong>web development</strong> and <strong>full stack applications</strong>,
+            especially in <em>AI/ML</em>.
+          </p>
 
-    <p class="tagline">
-      I’m interested in <strong>web development</strong> and <strong>full stack applications</strong>,
-      especially in <em>AI/ML</em>.
-    </p>
+          <div class="quick-links">
+            <a class="btn" href="#projects">
+              View Projects
+              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-outline" href="contact.html">
+              Contact Me
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <hr />
+  <main id="main">
+    <section aria-labelledby="education-heading" class="panel">
+      <h2 id="education-heading">Education</h2>
+      <dl class="two-col-dl">
+        <dt>University of Georgia</dt>
+        <dd>GPA: 3.7</dd>
 
-  <section aria-labelledby="education-heading">
-    <h3 id="education-heading">Education</h3>
-    <dl>
-      <dt>University of Georgia</dt>
-      <dd>GPA: 3.7</dd>
-      <dt>Bachelor of Science in Computer Science, Bachelor of Science in Psychology</dt>
-      <dd>Dec 2026</dd>
-    </dl>
-  </section>
+        <dt>B.S. Computer Science, B.S. Psychology</dt>
+        <dd>Dec 2026</dd>
+      </dl>
+    </section>
 
-  <section aria-labelledby="honors-heading">
-    <h3 id="honors-heading">Honors and Awards</h3>
-    <dl>
-      <dt>Dean's List</dt>
-      <dd>2022, 2023, 2024, 2025</dd>
-      <dt>Barbara James Service Award</dt>
-      <dd>2021</dd>
-    </dl>
-  </section>
+    <section aria-labelledby="honors-heading" class="panel">
+      <h2 id="honors-heading">Honors and Awards</h2>
+      <dl class="two-col-dl">
+        <dt>Dean's List</dt>
+        <dd>2022, 2023, 2024, 2025</dd>
 
-  <section aria-labelledby="skills-heading">
-    <h3 id="skills-heading">Skills</h3>
-    <ul>
-      <li>HTML</li>
-      <li>Java</li>
-      <li>JavaScript</li>
-      <li>React</li>
-      <li>CSS</li>
-      <li>Python</li>
-      <li>C++</li>
-      <li>Git</li>
-      <li>SQL</li>
-      <li>Linux</li>
-      <li>UNIX</li>
-      <li>Angular</li>
-      <li>.NET</li>
-      <li>OpenAI</li>
-      <li>Gemini</li>
-      <li>Flask</li>
-      <li>Vite React</li>
-      <li>Node.js</li>
-      <li>MongoDB</li>
-      <li>SQLite</li>
-      <li>Gemini</li>
-    </ul>
-  </section>
+        <dt>Barbara James Service Award</dt>
+        <dd>2021</dd>
+      </dl>
+    </section>
 
-  <section aria-labelledby="experience-heading">
-    <h3 id="experience-heading">Leadership and Experience</h3>
-    <dl>
-      <dt>
-        <a href="https://www.ups.com" target="_blank" rel="noopener noreferrer">
-          Software Engineering Intern/Co-Op, UPS – Global Freight Forwarding (GFF), Alpharetta, GA
-        </a>
-      </dt>
-      <dd>June 2025 – Dec. 2026</dd>
+    <section aria-labelledby="skills-heading" class="panel">
+      <h2 id="skills-heading">Skills</h2>
+      <ul class="skill-bubbles">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Angular</li>
+        <li>.NET</li>
+        <li>Node.js</li>
+        <li>Python</li>
+        <li>Java</li>
+        <li>C++</li>
+        <li>SQL</li>
+        <li>MongoDB</li>
+        <li>SQLite</li>
+        <li>Git</li>
+        <li>Linux</li>
+        <li>UNIX</li>
+        <li>Flask</li>
+        <li>Vite React</li>
+        <li>OpenAI</li>
+        <li>Gemini</li>
+      </ul>
+    </section>
 
-      <dt>
-        <a href="https://www.edvenswa.com" target="_blank" rel="noopener noreferrer">
-          IT Intern, Edvenswa Technologies, Roswell, GA
-        </a>
-      </dt>
-      <dd>July 2024 – May 2025</dd>
+    <section aria-labelledby="experience-heading" class="panel">
+      <h2 id="experience-heading">Leadership and Experience</h2>
 
-      <dt>
-        <a href="https://hexaware.com" target="_blank" rel="noopener noreferrer">
-          IT Intern, Hexaware (Remote)
-        </a>
-      </dt>
-      <dd>July 2024 – Sept. 2024</dd>
+      <dl class="stacked-dl">
+        <div class="dl-row">
+          <dt>
+            <a class="ext-link" href="https://www.ups.com" target="_blank" rel="noopener noreferrer">
+              Software Engineering Intern/Co-Op, UPS – Global Freight Forwarding (GFF), Alpharetta, GA
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+          </dt>
+          <dd>June 2025 – Dec 2026</dd>
+        </div>
 
-      <dt>
-        <a href="https://motrexllc.com" target="_blank" rel="noopener noreferrer">
-          IT Governance Intern, Motrex LLC (Subsidiary of Stryten Energy), Alpharetta, GA
-        </a>
-      </dt>
-      <dd>Apr. 2023 – Aug. 2023</dd>
+        <div class="dl-row">
+          <dt>
+            <a class="ext-link" href="https://www.edvenswa.com" target="_blank" rel="noopener noreferrer">
+              IT Intern, Edvenswa Technologies, Roswell, GA
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+          </dt>
+          <dd>July 2024 – May 2025</dd>
+        </div>
 
-      <dt>Technical Team Member, KnowAthens, Athens, GA</dt>
-      <dd>Oct. 2022 – Aug. 2023</dd>
-    </dl>
-  </section>
+        <div class="dl-row">
+          <dt>
+            <a class="ext-link" href="https://hexaware.com" target="_blank" rel="noopener noreferrer">
+              IT Intern, Hexaware (Remote)
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+          </dt>
+          <dd>July 2024 – Sept 2024</dd>
+        </div>
 
-  <section class="projects" aria-labelledby="projects-heading">
-    <h3 id="projects-heading">Projects</h3>
+        <div class="dl-row">
+          <dt>
+            <a class="ext-link" href="https://motrexllc.com" target="_blank" rel="noopener noreferrer">
+              IT Governance Intern, Motrex LLC (Subsidiary of Stryten Energy), Alpharetta, GA
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+          </dt>
+          <dd>Apr 2023 – Aug 2023</dd>
+        </div>
 
-    <div class="three-col">
+        <div class="dl-row">
+          <dt>Technical Team Member, KnowAthens, Athens, GA</dt>
+          <dd>Oct 2022 – Aug 2023</dd>
+        </div>
+      </dl>
+    </section>
 
-      <div class="card">
-        <h4>AI Quote Assistant</h4>
-        <img src="images/AI_Quote1.png" alt="Screenshot of AI Quote Assistant project" />
-        <img src="images/AI_Quote4.png" alt="Screenshot of AI Quote Assistant project" />
-        <img src="images/AI_Quote3.png" alt="Screenshot of AI Quote Assistant project" />
-        <img src="images/AI_Quote2.png" alt="Screenshot of AI Quote Assistant project" />
-        <ul>
-          <li>AI-powered quote automation tool from unstructured text</li>
-          <li>Parses unstructured shipping requests into structured JSON with schema validation</li>
-          <li>Angular + .NET + Azure OpenAI</li>
-        </ul>
+    <section id="projects" aria-labelledby="projects-heading" class="panel">
+      <div class="panel-head">
+        <h2 id="projects-heading">Projects</h2>
+        <p class="subtext">Search or filter, then click arrows to view more screenshots.</p>
       </div>
 
-      <div class="card">
-        <h4>Fraud Recognizer</h4>
-        <img src="images/ShipProf1.png" alt="Screenshot of Fraud Recognizer project" />
-        <img src="images/ShipProf2.png" alt="Screenshot of Fraud Recognizer project" />
-        <ul>
-          <li>UPS Hackathon POC: detects anomalous shipper behavior in 24 hours</li>
-          <li>Won in top 5 for nation-wide UPS hackathon; projected $1–$4M cost savings</li>
-          <li>React + Flask + Gemini AI; SQLite prototype</li>
-        </ul>
+      <div class="projects-toolbar" aria-label="Project filters">
+        <div class="search-wrap">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input id="projectSearch" type="search" placeholder="Search projects (e.g., Angular, AI, UPS)..." />
+        </div>
+
+        <div class="chip-row" role="group" aria-label="Filter by technology">
+          <button class="chip active" type="button" data-filter="all">All</button>
+          <button class="chip" type="button" data-filter="ai">AI</button>
+          <button class="chip" type="button" data-filter="angular">Angular</button>
+          <button class="chip" type="button" data-filter="react">React</button>
+          <button class="chip" type="button" data-filter="dotnet">.NET</button>
+          <button class="chip" type="button" data-filter="flask">Flask</button>
+        </div>
       </div>
 
-      <div class="card">
-        <h4>OT/ICS Cybersecurity Policy</h4>
-        <img src="images/OT_project.png" alt="OT Project Plan" />
-        <ul>
-          <li>Planning process pictured above</li>
-          <li>Authored and developed phases and plans to create the OT/ICS Cybersecurity Policy</li>
-          <li>Used for future guidance to implement the firm's cybersecurity defense program</li>
-          <li>Policy described possible use of AWS services</li>
-        </ul>
+      <p class="results-note" id="resultsNote" aria-live="polite"></p>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="card" data-tags="ai angular dotnet openai">
+          <h3>AI Quote Assistant</h3>
+
+          <div class="badges" aria-label="Tech stack">
+            <span class="badge">Angular</span>
+            <span class="badge">.NET</span>
+            <span class="badge">Azure OpenAI</span>
+          </div>
+
+          <div class="slider" aria-label="AI Quote Assistant screenshots">
+            <button class="slider-btn prev" type="button" aria-label="Previous image">‹</button>
+
+            <div class="slides">
+              <img class="slide active" src="images/AI_Quote1.png" alt="AI Quote Assistant screenshot 1" />
+              <img class="slide" src="images/AI_Quote4.png" alt="AI Quote Assistant screenshot 2" />
+              <img class="slide" src="images/AI_Quote3.png" alt="AI Quote Assistant screenshot 3" />
+              <img class="slide" src="images/AI_Quote2.png" alt="AI Quote Assistant screenshot 4" />
+            </div>
+
+            <button class="slider-btn next" type="button" aria-label="Next image">›</button>
+            <div class="dots" aria-label="Slide controls"></div>
+          </div>
+
+          <ul class="bullets">
+            <li>AI-powered quote automation tool from unstructured text</li>
+            <li>Parses shipping requests into structured JSON with schema validation</li>
+            <li>Angular + .NET + Azure OpenAI</li>
+          </ul>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card" data-tags="ai react flask gemini">
+          <h3>Fraud Recognizer</h3>
+
+          <div class="badges" aria-label="Tech stack">
+            <span class="badge">React</span>
+            <span class="badge">Flask</span>
+            <span class="badge">Gemini</span>
+          </div>
+
+          <div class="slider" aria-label="Fraud Recognizer screenshots">
+            <button class="slider-btn prev" type="button" aria-label="Previous image">‹</button>
+
+            <div class="slides">
+              <img class="slide active" src="images/ShipProf1.png" alt="Fraud Recognizer screenshot 1" />
+              <img class="slide" src="images/ShipProf2.png" alt="Fraud Recognizer screenshot 2" />
+            </div>
+
+            <button class="slider-btn next" type="button" aria-label="Next image">›</button>
+            <div class="dots" aria-label="Slide controls"></div>
+          </div>
+
+          <ul class="bullets">
+            <li>UPS Hackathon POC: detects anomalous shipper behavior in 24 hours</li>
+            <li>Top 5 in nationwide UPS hackathon; projected $1–$4M cost savings</li>
+            <li>React + Flask + Gemini AI; SQLite prototype</li>
+          </ul>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card" data-tags="security policy aws">
+          <h3>OT/ICS Cybersecurity Policy</h3>
+
+          <div class="badges" aria-label="Focus">
+            <span class="badge">Security</span>
+            <span class="badge">Policy</span>
+            <span class="badge">AWS</span>
+          </div>
+
+          <img class="project-img" src="images/OT_project.png"
+            alt="OT/ICS Cybersecurity Policy project plan screenshot" />
+
+          <ul class="bullets">
+            <li>Authored and planned phases for an OT/ICS cybersecurity policy</li>
+            <li>Used for future guidance to implement the firm’s defense program</li>
+            <li>Included recommendations for AWS services</li>
+          </ul>
+        </article>
       </div>
+    </section>
+  </main>
 
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 <a href="contact.html">Saanvi Bamba</a></p>
+  <footer class="site-footer">
+    <p>&copy; 2025 <a class="footer-link" href="contact.html">Saanvi Bamba</a></p>
     <p>
-      <a
-        href="https://www.linkedin.com/in/saanvibamba"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-      >
+      <a class="icon-link" href="https://www.linkedin.com/in/saanvibamba" target="_blank" rel="noopener noreferrer"
+        aria-label="LinkedIn">
         <i class="fa-brands fa-square-linkedin" aria-hidden="true"></i>
+        <span class="sr-only">LinkedIn</span>
       </a>
     </p>
   </footer>
+
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+
+  <script src="js/slider.js"></script>
+  <script src="js/site.js"></script>
 </body>
+
 </html>

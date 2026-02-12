@@ -1,67 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Saanvi Bamba</title>
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <nav>
-    <p>Saanvi Bamba</p>
-    <p><a href="index.html">About Saanvi Bamba</a></p>
+  <nav class="site-nav">
+    <div class="nav-left">
+      <p class="brand">Saanvi Bamba</p>
+    </div>
+
+    <div class="nav-right">
+      <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        <span>Dark</span>
+      </button>
+
+      <a class="nav-link" href="index.html">About</a>
+      <a class="nav-link icon-link" href="https://www.linkedin.com/in/saanvibamba" target="_blank"
+        rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fa-brands fa-square-linkedin" aria-hidden="true"></i>
+        <span class="sr-only">LinkedIn</span>
+      </a>
+    </div>
   </nav>
 
-  <header>
-    <h1>Saanvi Bamba</h1>
+  <header class="contact-hero">
+    <h1>Contact</h1>
 
     <p class="address">
-      3005 Creek Tree Ln, Cumming, GA &ndash; 678-897-3414 &ndash;
-      <a href="mailto:saanvi.bamba@gmail.com">saanvi.bamba@gmail.com</a>
+      Cumming, GA &ndash; 678-897-3414 &ndash;
+      <a class="icon-link" href="mailto:saanvi.bamba@gmail.com">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        saanvi.bamba@gmail.com
+      </a>
     </p>
   </header>
 
-  <hr />
+  <main>
+    <section class="one-col panel" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Send a message</h2>
 
-  <section class="one-col" aria-labelledby="contact-heading">
-    <h3 id="contact-heading">Contact Me</h3>
+      <form class="contact-form" action="https://formsubmit.co/saanvi.bamba@gmail.com" method="POST">
+        <label for="name">Your Name:</label>
+        <input id="name" type="text" name="name" required />
 
-    <form action="https://formsubmit.co/saanvi.bamba@gmail.com" method="POST">
-      <label for="name">Your Name:</label>
-      <input id="name" type="text" name="name" required />
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="email" required />
 
-      <label for="email">Email:</label>
-      <input id="email" type="email" name="email" required />
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="6"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
 
-      <button type="submit">Submit</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 <a href="index.html">Saanvi Bamba</a></p>
+  <footer class="site-footer">
+    <p>&copy; 2025 <a class="footer-link" href="index.html">Saanvi Bamba</a></p>
     <p>
-      <a
-        href="https://www.linkedin.com/in/saanvibamba"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-      >
-        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+      <a class="icon-link" href="mailto:saanvi.bamba@gmail.com" aria-label="Email">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        <span class="sr-only">Email</span>
+      </a>
+      <a class="icon-link" href="https://www.linkedin.com/in/saanvibamba" target="_blank" rel="noopener noreferrer"
+        aria-label="LinkedIn">
+        <i class="fa-brands fa-square-linkedin" aria-hidden="true"></i>
+        <span class="sr-only">LinkedIn</span>
       </a>
     </p>
   </footer>
+
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+
+  <script src="js/site.js"></script>
 </body>
+
 </html>
